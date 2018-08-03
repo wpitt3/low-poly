@@ -1,0 +1,7 @@
+package lowpoly
+
+
+
+class Main {
+
+}
