@@ -14,7 +14,7 @@ class MaskImageConvoluterSpec extends Specification {
     given:
       List image = createFilledMatrix(10, 10, 0)
     when:
-      List result = maskImageConvoluter.runMaskAcrossImage(image, MaskImageConvoluter.Mask.HORIZONTAL_EDGE_MASK)
+      List result = maskImageConvoluter.runMaskAcrossGreyImage(image, MaskImageConvoluter.Mask.HORIZONTAL_EDGE_MASK)
 
     then:
       result.every{ column ->
@@ -28,7 +28,7 @@ class MaskImageConvoluterSpec extends Specification {
       image[5][5] = 100
 
     when:
-      List result = maskImageConvoluter.runMaskAcrossImage(image, MaskImageConvoluter.Mask.HORIZONTAL_EDGE_MASK)
+      List result = maskImageConvoluter.runMaskAcrossGreyImage(image, MaskImageConvoluter.Mask.HORIZONTAL_EDGE_MASK)
 
     then:
       result[4][4] == -70.71
@@ -45,7 +45,7 @@ class MaskImageConvoluterSpec extends Specification {
       image[5][5] = 100
 
     when:
-      List result = maskImageConvoluter.runMaskAcrossImage(image, MaskImageConvoluter.Mask.GAUSSIAN_BLUR_5)
+      List result = maskImageConvoluter.runMaskAcrossGreyImage(image, MaskImageConvoluter.Mask.GAUSSIAN_BLUR_5)
 
     then:
       result[5][5] == MaskImageConvoluter.Mask.GAUSSIAN_BLUR_5[2][2] * 100
